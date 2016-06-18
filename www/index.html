@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="showMyFile">
+<head>
+	<title>ShowMyScreen</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/showmyfiles.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-tree-control.js"></script>
+	<script type="text/javascript" src="js/show_controller.js"></script>
+</head>
+<body ng-controller="showController">
+	<div class="control" ng-class="{hidden: hidden}">
+		<div class="show" ng-click="hiddenButton()" ng-show="typeFile == 'screen'">SHOW</div>
+		<div class="btshowscreen" ng-click="showScreenClick()" ng-class="{showOn: typeFile=='screen'}" ng-show="typeFile != 'screen'">
+			<img src="images/screen54.png">
+			Show Screen
+		</div>
+		<div class="title" ng-show="!thereIsFilesDownload">Nenhum arquivo para download!</div>
+		<div class="title" ng-show="thereIsFilesDownload"><b>DOWNLOADS:</b></div>
+		<div>
+			<treecontrol class="tree-light" tree-model="filesDownloads" on-selection="showSelectedToDownload(node)">
+			     {{node.name}}
+			</treecontrol>
+		</div>
+	</div>
+	
+	<img id="imageScreen" ng-src="{{decachedImageUrl}}" ng-show="typeFile=='screen'">
+
+</body>
+</html>
