@@ -1,7 +1,7 @@
 var config = {};
 
 config.app = {};
-config.app.port = 80;
+config.app.port = 8080;
 
 config.dirlist = "";
 
